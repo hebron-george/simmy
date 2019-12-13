@@ -2,7 +2,7 @@
 require 'rubygems'
 require 'gosu'
 
-class Floor
+class SimmyScreen
   attr_accessor :x, :y, :width, :height, :color
 
   def initialize(window, x, y, width, height, color)
