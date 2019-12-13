@@ -1,17 +1,42 @@
 #!/usr/bin/env ruby -w
 require 'rubygems'
 require 'gosu'
+require 'pry'
 
-class SimmyScreen
-  attr_accessor :x, :y, :width, :height, :color
+# class SimmyScreen
+#   attr_accessor :x, :y, :width, :height, :color
+#
+#   def initialize(window, x, y, width, height, color)
+#     @x = x
+#     @y = y
+#     @width  = width
+#     @height = height
+#     @color  = color
+#     binding.pry
+#     @window = windows
+#   end
+# end
 
-  def initialize(window, x, y, width, height, color)
-    @x = x
-    @y = y
-    @width  = width
-    @height = height
-    @color  = color
-    @window = windows
+class Simmy
+  attr_reader :current_sequence
+
+  ELEMENTS = [:a, :b, :c, :d]
+
+  def initialize
+    setup_game!
+  end
+
+  def setup_game!
+    @score = 0
+    @current_sequence = [ELEMENTS.sample]
+  end
+
+  def check_at_index(index, value)
+    value == current_sequence[index]
+  end
+
+  def increment!
+    @current_sequence.append(ELEMENTS.sample)
   end
 end
 
@@ -35,4 +60,5 @@ class Game < Gosu::Window
   end
 end
 
-Game.new.show
+# Simmy.new.show
+binding.pry
